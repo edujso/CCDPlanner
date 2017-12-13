@@ -1,0 +1,47 @@
+.toast-container {
+    /*-webkit-transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  -webkit-transition-duration: 1.0s;
+          transition-duration: 1.0s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;*/
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 50%;
+    overflow: scroll;
+    background: #3A9939;
+    z-index: 999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.toast-container > * {
+  text-align: center;
+}
+.toast-container {
+    pointer-events: none !important;
+}
+.toast-card {
+  width: 100%;
+  z-index: 1;
+  padding: 2px;
+  position: relative;
+  /*background-color: rgb(255,64,129);*/
+  background-color: #3c8dbc;
+  text-align: center;
+  color: white;
+}
+
+.toast-card .toast-message {
+  margin: 0em 2em 1em 2em;
+}
+
+.toast-card .toast-title {
+  text-transform: uppercase;
+  margin: 16px;
+  font-size: 18px;
+}

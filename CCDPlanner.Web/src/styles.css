@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/Ionicons/dist/css/ionicons.min.css";
+@import "../node_modules/admin-lte/dist/css/AdminLTE.css";
+@import "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css";
+@import "../node_modules/morris.js/morris.css";
+@import "../node_modules/jvectormap/jquery-jvectormap.css";
+@import "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+@import "../node_modules/bootstrap-daterangepicker/daterangepicker.css";
+@import "../node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  position: absolute;
+}
+
+.content-wrapper {
+  min-height: 800px;
+  bottom: 50px;
+  width: 100%;
+  top: 50px;
+}
+
+.main-footer {
+  bottom: 0px;
+  position: fixed;
+  width: 100%;
+}
+
+select {
+  height: 34px;
+}

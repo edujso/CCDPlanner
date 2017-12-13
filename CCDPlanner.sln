@@ -3,9 +3,69 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8AA1489D-B710-4AF6-8AB0-AE51133040F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Entities", "Data.Entities\Data.Entities.csproj", "{4BD32257-2CE1-446B-9878-6C27F3ED2EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Access", "Data.Access\Data.Access.csproj", "{94DCF62E-2346-4706-B5B8-328ACEE9006E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{6F7371A6-2AD4-4837-932E-B8CCDF2CF132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCDPlanner.Api", "CCDPlanner.Api\CCDPlanner.Api.csproj", "{F7E28281-0112-43D2-A032-3D9A0A243EB6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CCDPlanner.Web", "CCDPlanner.Web\", "{0948C58C-6711-41C6-8685-C6FFBA3E885E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57283"
+		Debug.AspNetCompiler.PhysicalPath = "CCDPlanner.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57283\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57283"
+		Release.AspNetCompiler.PhysicalPath = "CCDPlanner.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57283\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57283"
+		SlnRelativePath = "CCDPlanner.Web\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BD32257-2CE1-446B-9878-6C27F3ED2EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD32257-2CE1-446B-9878-6C27F3ED2EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD32257-2CE1-446B-9878-6C27F3ED2EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD32257-2CE1-446B-9878-6C27F3ED2EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94DCF62E-2346-4706-B5B8-328ACEE9006E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DCF62E-2346-4706-B5B8-328ACEE9006E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DCF62E-2346-4706-B5B8-328ACEE9006E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DCF62E-2346-4706-B5B8-328ACEE9006E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7E28281-0112-43D2-A032-3D9A0A243EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7E28281-0112-43D2-A032-3D9A0A243EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7E28281-0112-43D2-A032-3D9A0A243EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7E28281-0112-43D2-A032-3D9A0A243EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0948C58C-6711-41C6-8685-C6FFBA3E885E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0948C58C-6711-41C6-8685-C6FFBA3E885E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0948C58C-6711-41C6-8685-C6FFBA3E885E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0948C58C-6711-41C6-8685-C6FFBA3E885E}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4BD32257-2CE1-446B-9878-6C27F3ED2EF9} = {8AA1489D-B710-4AF6-8AB0-AE51133040F6}
+		{94DCF62E-2346-4706-B5B8-328ACEE9006E} = {8AA1489D-B710-4AF6-8AB0-AE51133040F6}
+		{F7E28281-0112-43D2-A032-3D9A0A243EB6} = {6F7371A6-2AD4-4837-932E-B8CCDF2CF132}
+		{0948C58C-6711-41C6-8685-C6FFBA3E885E} = {6F7371A6-2AD4-4837-932E-B8CCDF2CF132}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B7D5D96-7B18-4903-82FB-F89482BC3BFC}
