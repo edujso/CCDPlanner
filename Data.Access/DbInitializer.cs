@@ -41,77 +41,93 @@ namespace Data.Access
                     StartDate = DateTime.Now
                 };
 
-                
-
-
-                List<Record> records1 = new List<Record>()
+                BudgetCategory bc1 = new BudgetCategory()
                 {
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project1.ProjectId,
-                        Name = "Phone"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project1.ProjectId,
-                        Name = "Rent"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project1.ProjectId,
-                        Name = "Food"
-                    }
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Infrastructure"
                 };
 
-                List<Record> records2 = new List<Record>()
+                BudgetCategory bc11 = new BudgetCategory()
                 {
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project2.ProjectId,
-                        Name = "Phone2"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project2.ProjectId,
-                        Name = "Rent2"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project2.ProjectId,
-                        Name = "Food2"
-                    }
-                };
-                List<Record> records3 = new List<Record>()
-                {
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project3.ProjectId,
-                        Name = "Phone3"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project3.ProjectId,
-                        Name = "Rent3"
-                    },
-                    new Record()
-                    {
-                        RecordId = Guid.NewGuid(),
-                        ProjectId = project3.ProjectId,
-                        Name = "Food3"
-                    }
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Rent",
+                    ParentCategoryId = bc1.BudgetCategoryId
                 };
 
-                project1.Records = records1;
-                project2.Records = records2;
-                project3.Records = records3;
+                BudgetCategory bc12 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Phone",
+                    ParentCategoryId = bc1.BudgetCategoryId
+                };
+
+                BudgetCategory bc121 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Business Phone",
+                    ParentCategoryId = bc12.BudgetCategoryId
+                };
+
+                BudgetCategory bc122 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Private Phone",
+                    ParentCategoryId = bc12.BudgetCategoryId
+                };
+
+                BudgetCategory bc1221 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Private Phone Euro",
+                    ParentCategoryId = bc122.BudgetCategoryId
+                };
+
+                BudgetCategory bc1222 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Private Phone Dollars",
+                    ParentCategoryId = bc122.BudgetCategoryId
+                };
+
+                BudgetCategory bc2 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Activites"
+                };
+
+                BudgetCategory bc21 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Seminar",
+                    ParentCategoryId = bc2.BudgetCategoryId
+                };
+
+                BudgetCategory bc22 = new BudgetCategory()
+                {
+                    BudgetCategoryId = Guid.NewGuid(),
+                    Description = "Online Show",
+                    ParentCategoryId = bc2.BudgetCategoryId
+                };
+
+
+                project1.BudgetCategories.Add(bc1);
+                project1.BudgetCategories.Add(bc11);
+                project1.BudgetCategories.Add(bc12);
+                project1.BudgetCategories.Add(bc2);
+                project1.BudgetCategories.Add(bc21);
+                project1.BudgetCategories.Add(bc22);
+                project1.BudgetCategories.Add(bc121);
+                project1.BudgetCategories.Add(bc122);
+                project1.BudgetCategories.Add(bc1221);
+                project1.BudgetCategories.Add(bc1222);
+
+                project2.BudgetCategories.Add(bc2);
+                project2.BudgetCategories.Add(bc21);
+                project2.BudgetCategories.Add(bc22);
+
+                project3.BudgetCategories.Add(bc2);
+                project3.BudgetCategories.Add(bc21);
+                project3.BudgetCategories.Add(bc22);
 
                 context.Projects.Add(project1);
                 context.Projects.Add(project2);

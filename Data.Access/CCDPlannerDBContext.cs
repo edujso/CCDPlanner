@@ -11,13 +11,16 @@ namespace Data.Access
     public class CCDPlannerDBContext : IdentityDbContext<User>
     {
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Record> Records { get; set; }
+        public DbSet<BudgetCategory> BudgetCategories { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public CCDPlannerDBContext(DbContextOptions<CCDPlannerDBContext> options)
             : base(options)
         {
 
         }
+
+        public CCDPlannerDBContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
@@ -28,6 +31,12 @@ namespace Data.Access
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<BudgetCategory>()
+                .HasMany(c => c.ChildrenCategories)
+                .WithOne(c => c.ParentCategory)
+                .HasForeignKey(c => c.ParentCategoryId);
+                
         }
     }
 }

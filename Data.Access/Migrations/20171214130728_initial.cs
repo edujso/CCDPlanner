@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Data.Access.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -173,24 +173,29 @@ namespace Data.Access.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Records",
+                name: "BudgetCategories",
                 columns: table => new
                 {
-                    RecordId = table.Column<Guid>(nullable: false),
-                    Budget = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<Guid>(nullable: false),
-                    Sponsor = table.Column<string>(nullable: true)
+                    BudgetCategoryId = table.Column<Guid>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    ParentCategoryId = table.Column<Guid>(nullable: true),
+                    ProjectId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Records", x => x.RecordId);
+                    table.PrimaryKey("PK_BudgetCategories", x => x.BudgetCategoryId);
                     table.ForeignKey(
-                        name: "FK_Records_Projects_ProjectId",
+                        name: "FK_BudgetCategories_BudgetCategories_ParentCategoryId",
+                        column: x => x.ParentCategoryId,
+                        principalTable: "BudgetCategories",
+                        principalColumn: "BudgetCategoryId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BudgetCategories_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -233,8 +238,13 @@ namespace Data.Access.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Records_ProjectId",
-                table: "Records",
+                name: "IX_BudgetCategories_ParentCategoryId",
+                table: "BudgetCategories",
+                column: "ParentCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BudgetCategories_ProjectId",
+                table: "BudgetCategories",
                 column: "ProjectId");
         }
 
@@ -256,7 +266,7 @@ namespace Data.Access.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Records");
+                name: "BudgetCategories");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

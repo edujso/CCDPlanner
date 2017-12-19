@@ -20,6 +20,26 @@ namespace Data.Access.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Data.Entities.BudgetCategory", b =>
+                {
+                    b.Property<Guid>("BudgetCategoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<Guid?>("ParentCategoryId");
+
+                    b.Property<Guid?>("ProjectId");
+
+                    b.HasKey("BudgetCategoryId");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("BudgetCategories");
+                });
+
             modelBuilder.Entity("Data.Entities.Project", b =>
                 {
                     b.Property<Guid>("ProjectId")
@@ -38,26 +58,6 @@ namespace Data.Access.Migrations
                     b.HasKey("ProjectId");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("Data.Entities.Record", b =>
-                {
-                    b.Property<Guid>("RecordId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Budget");
-
-                    b.Property<string>("Name");
-
-                    b.Property<Guid>("ProjectId");
-
-                    b.Property<string>("Sponsor");
-
-                    b.HasKey("RecordId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("Records");
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>
@@ -223,12 +223,15 @@ namespace Data.Access.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Data.Entities.Record", b =>
+            modelBuilder.Entity("Data.Entities.BudgetCategory", b =>
                 {
+                    b.HasOne("Data.Entities.BudgetCategory", "ParentCategory")
+                        .WithMany("ChildrenCategories")
+                        .HasForeignKey("ParentCategoryId");
+
                     b.HasOne("Data.Entities.Project")
-                        .WithMany("Records")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("BudgetCategories")
+                        .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

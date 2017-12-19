@@ -18,6 +18,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
+using Data.Contracts;
+using Data.Access.Repositories;
 
 namespace CCDPlanner.Api
 {
@@ -48,8 +50,14 @@ namespace CCDPlanner.Api
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton(_config);
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(
+                    options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             services.AddCors();
+
+            // Add services
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddDbContext<CCDPlannerDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))

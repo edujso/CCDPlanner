@@ -24,6 +24,7 @@ import { AdminModule } from './admin/admin.module';
 // Services
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from "./guards/auth.guard";
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthGuard } from "./guards/auth.guard";
     SpinnerComponent,
     ModalComponent,
     FilterTextComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectComponent
 
   ],
   imports: [
