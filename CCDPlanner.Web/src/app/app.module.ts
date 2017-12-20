@@ -25,6 +25,8 @@ import { AdminModule } from './admin/admin.module';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from "./guards/auth.guard";
 import { ProjectComponent } from './project/project.component';
+import { CategoryComponent } from './category/category.component';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ProjectComponent } from './project/project.component';
     ModalComponent,
     FilterTextComponent,
     LoginComponent,
-    ProjectComponent
+    ProjectComponent,
+    CategoryComponent
 
   ],
   imports: [
@@ -52,6 +55,7 @@ import { ProjectComponent } from './project/project.component';
     ExceptionService,
     FilterService,
     AuthenticationService,
+    CategoryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthGuard
   ],

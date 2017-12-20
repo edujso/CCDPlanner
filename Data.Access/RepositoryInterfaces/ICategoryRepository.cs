@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Contracts
+namespace Data.Access
 {
     public interface ICategoryRepository : IDataRepository<BudgetCategory>
-    { }
+    {
+    }
 }

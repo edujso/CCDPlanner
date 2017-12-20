@@ -18,7 +18,6 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
-using Data.Contracts;
 using Data.Access.Repositories;
 
 namespace CCDPlanner.Api

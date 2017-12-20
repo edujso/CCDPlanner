@@ -1,0 +1,17 @@
+<div *ngFor="let category of categories" class="panel box box-primary">
+  <div class="box-header">
+    <h4 class="box-title">
+      <a (click)="toggle(category)">
+        <span *ngIf="!category.expanded && category.childrenCategories != null" class="fa fa-caret-right"></span>
+        <span *ngIf="category.expanded && category.childrenCategories != null" class="fa fa-caret-down"></span>
+        {{category.description}}
+      </a>                
+    </h4>
+    <a class="fa fa-plus pull-right"></a>
+  </div>            
+  <div *ngIf="category.expanded && category.childrenCategories != null" class="box-body">
+    <app-category [categories]="category.childrenCategories"></app-category>
+  </div>
+</div>
+
+

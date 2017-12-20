@@ -1,9 +1,11 @@
-﻿export class Category {
+export class Category {
     constructor(
-        public id: number,
-        public name: string,
-        public hasSubCategories: boolean,
-        public isSubCategory: boolean,
-        public subCategories: Category[]
+      public budgetCategoryId: string,
+      public description: string,
+      public parentCategoryId: boolean,
+      public parentCategory: Category,
+      public childrenCategories: Category[],
+      public expanded: boolean = false,
+      public checked: boolean = false,
     ) { }
 }

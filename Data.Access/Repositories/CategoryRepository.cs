@@ -1,10 +1,10 @@
-﻿using Data.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Data.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace Data.Access.Repositories
 {
@@ -17,7 +17,9 @@ namespace Data.Access.Repositories
 
         protected override IEnumerable<BudgetCategory> GetEntities(CCDPlannerDBContext entityContext)
         {
-            return entityContext.BudgetCategories;
+            IEnumerable<BudgetCategory> categories = entityContext.BudgetCategories;
+
+            return categories.Where(c => c.ParentCategoryId == null);
         }
 
         protected override BudgetCategory GetEntity(CCDPlannerDBContext entityContext, Guid id)
