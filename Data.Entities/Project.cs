@@ -20,7 +20,13 @@ namespace Data.Entities
 
         public DateTime EndDate { get; set; }
 
-        public virtual ICollection<BudgetCategory> BudgetCategories { get; set; }
-            = new List<BudgetCategory>();
+        public ICollection<ProjectBudgetCategory> ProjectBudgetCategories { get; set; }
+            = new List<ProjectBudgetCategory>();
+
+        public ICollection<BudgetLine> BudgetLines { get; set; }
+            = new List<BudgetLine>();
+
+        public ICollection<Sponsor> Sponsors { get; set; }
+            = new List<Sponsor>();
     }
 }

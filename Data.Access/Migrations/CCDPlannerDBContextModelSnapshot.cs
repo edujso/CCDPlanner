@@ -29,15 +29,39 @@ namespace Data.Access.Migrations
 
                     b.Property<Guid?>("ParentCategoryId");
 
-                    b.Property<Guid?>("ProjectId");
-
                     b.HasKey("BudgetCategoryId");
 
                     b.HasIndex("ParentCategoryId");
 
+                    b.ToTable("BudgetCategories");
+                });
+
+            modelBuilder.Entity("Data.Entities.BudgetLine", b =>
+                {
+                    b.Property<Guid>("BudgetLineId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CostPerUnit");
+
+                    b.Property<string>("Descriptioin");
+
+                    b.Property<int>("NumberOfUnits");
+
+                    b.Property<Guid>("ProjectBudgetCategoryId");
+
+                    b.Property<Guid?>("ProjectId");
+
+                    b.Property<string>("TotalCost");
+
+                    b.Property<string>("Unit");
+
+                    b.HasKey("BudgetLineId");
+
+                    b.HasIndex("ProjectBudgetCategoryId");
+
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("BudgetCategories");
+                    b.ToTable("BudgetLines");
                 });
 
             modelBuilder.Entity("Data.Entities.Project", b =>
@@ -58,6 +82,42 @@ namespace Data.Access.Migrations
                     b.HasKey("ProjectId");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Data.Entities.ProjectBudgetCategory", b =>
+                {
+                    b.Property<Guid>("ProjectBudgetCategoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("BudgetCategoryId");
+
+                    b.Property<Guid>("ProjectId");
+
+                    b.HasKey("ProjectBudgetCategoryId");
+
+                    b.HasIndex("BudgetCategoryId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectBudgetCategories");
+                });
+
+            modelBuilder.Entity("Data.Entities.Sponsor", b =>
+                {
+                    b.Property<Guid>("SponsorId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid?>("ProjectId");
+
+                    b.HasKey("SponsorId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Sponsor");
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>
@@ -228,9 +288,37 @@ namespace Data.Access.Migrations
                     b.HasOne("Data.Entities.BudgetCategory", "ParentCategory")
                         .WithMany("ChildrenCategories")
                         .HasForeignKey("ParentCategoryId");
+                });
+
+            modelBuilder.Entity("Data.Entities.BudgetLine", b =>
+                {
+                    b.HasOne("Data.Entities.ProjectBudgetCategory", "ProjectBudgetCategory")
+                        .WithMany("BudgetLines")
+                        .HasForeignKey("ProjectBudgetCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Data.Entities.Project")
-                        .WithMany("BudgetCategories")
+                        .WithMany("BudgetLines")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("Data.Entities.ProjectBudgetCategory", b =>
+                {
+                    b.HasOne("Data.Entities.BudgetCategory", "BudgetCategory")
+                        .WithMany("ProjectBudgetCategory")
+                        .HasForeignKey("BudgetCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Data.Entities.Project", "Project")
+                        .WithMany("ProjectBudgetCategories")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Data.Entities.Sponsor", b =>
+                {
+                    b.HasOne("Data.Entities.Project")
+                        .WithMany("Sponsors")
                         .HasForeignKey("ProjectId");
                 });
 

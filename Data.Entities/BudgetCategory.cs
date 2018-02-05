@@ -20,5 +20,7 @@ namespace Data.Entities
         public virtual BudgetCategory ParentCategory { get; set; }
 
         public virtual ICollection<BudgetCategory> ChildrenCategories { get; set; }
+
+        public ICollection<ProjectBudgetCategory> ProjectBudgetCategory { get; set; } = new List<ProjectBudgetCategory>();
     }
 }

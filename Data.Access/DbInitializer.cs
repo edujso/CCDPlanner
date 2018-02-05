@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace Data.Access
     {
         public static void Initialize(CCDPlannerDBContext context)
         {
+            //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            if(!context.Projects.Any())
+            if(true)
             {
                 Project project1 = new Project()
                 {
@@ -110,28 +112,49 @@ namespace Data.Access
                 };
 
 
-                project1.BudgetCategories.Add(bc1);
-                project1.BudgetCategories.Add(bc11);
-                project1.BudgetCategories.Add(bc12);
-                project1.BudgetCategories.Add(bc2);
-                project1.BudgetCategories.Add(bc21);
-                project1.BudgetCategories.Add(bc22);
-                project1.BudgetCategories.Add(bc121);
-                project1.BudgetCategories.Add(bc122);
-                project1.BudgetCategories.Add(bc1221);
-                project1.BudgetCategories.Add(bc1222);
+                ProjectBudgetCategory pbc1 = context.ProjectBudgetCategories.Where(pbc => pbc.BudgetCategory.Description == "Business Phone").FirstOrDefault();
 
-                project2.BudgetCategories.Add(bc2);
-                project2.BudgetCategories.Add(bc21);
-                project2.BudgetCategories.Add(bc22);
 
-                project3.BudgetCategories.Add(bc2);
-                project3.BudgetCategories.Add(bc21);
-                project3.BudgetCategories.Add(bc22);
+                //context.Add(pbc1);
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc11 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc12 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc2 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc21 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc22 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc121 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc122 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc1221 });
+                //context.Add(new ProjectBudgetCategory { Project = project1, BudgetCategory = bc1222 });
 
-                context.Projects.Add(project1);
-                context.Projects.Add(project2);
-                context.Projects.Add(project3);
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc1 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc11 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc12 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc2 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc21 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc22 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc121 });
+                //context.Add(new ProjectBudgetCategory { Project = project2, BudgetCategory = bc122 });
+
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc1 });
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc11 });
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc12 });
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc2 });
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc121 });
+                //context.Add(new ProjectBudgetCategory { Project = project3, BudgetCategory = bc122 });
+
+
+
+                BudgetLine bl1 = new BudgetLine()
+                {
+                    Descriptioin = "Phone costs for Edin Dujso",
+                    Unit = "Month",
+                    NumberOfUnits = 12,
+                    CostPerUnit = 50,
+                    TotalCost = "600",
+                    ProjectBudgetCategory = pbc1
+                };
+
+                context.Add(bl1);
 
                 context.SaveChanges();
             }
